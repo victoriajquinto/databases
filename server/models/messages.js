@@ -2,24 +2,25 @@ var db = require('../db');
 
 module.exports = {
   mynameis: 'messages',
-  getAll: function () {
-    /* db.query(
+  getAll: function (callback) {
+    db.query(
       'SELECT * FROM messages',
       function(err, results, fields) {
         console.log('results', results);
         console.log('fields', fields);
+        callback(null, results);
       }
-    ); */
+    );
   }, // a function which produces all the messages
-  create: function (data, callback) {
-    console.log('data', data);
+  create: function ({ message, username, roomname }, callback) {
+    console.log('message', message);
     db.query(
-      `INSERT INTO messages (text) VALUES (${JSON.stringify(data.text)})`,
+      `INSERT INTO messages (text) VALUES (${JSON.stringify(message)})`,
       function(err, results, fields) {
         if (err) {
-          callback(err);
+          return callback(err);
         }
-        callback(null, results);
+        return callback(null, results);
       }
     );
   } // a function which can be used to insert a message into the database

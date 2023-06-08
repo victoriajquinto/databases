@@ -3,7 +3,7 @@ var models = require('../models');
 module.exports = {
   get: function (req, res) {
     console.log('req.body', req.body);
-    models.messages.getAll( (err, messages) => {
+    models.messages.getAll((err, messages) => {
       if (err) {
         res.sendStatus(400);
       } else {
