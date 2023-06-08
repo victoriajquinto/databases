@@ -8,3 +8,17 @@ var mysql = require('mysql2');
 // user: 'root', password: 'some_password_you_created_at_install'
 
 
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  database: 'chat'
+});
+
+/* connection.query(
+  'SELECT * FROM `messages`',
+  function(err, results, fields) {
+    console.log('results', results);
+    console.log('fields', fields);
+  }
+); */
+module.exports = connection;
